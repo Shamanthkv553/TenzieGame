@@ -1,26 +1,43 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+
 module.exports = {
-  mode: 'development', 
-  "output": {
-    "filename": "[name].pack.js"
+  mode: 'development',
+  entry: '/index.js',
+  output: {
+    filename: 'main.pack.js',
+    path: path.resolve(__dirname, 'dist'),
   },
-  "module": {
-    "rules": [
+  devServer: {
+    static: {
+      directory: path.join(__dirname, 'dist'),
+    },
+    compress: true,
+    port: 9000,
+    open: true,
+    hot: true,
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+    }),
+  ],
+  module: {
+    rules: [
       {
-        "use": {
-          "loader": "babel-loader",
-          "options": {
-            "presets": [
-              "@babel/preset-env", 
-              "@babel/preset-react"
-            ]
-          }
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+          },
         },
-        "exclude": /node_modules/,
-        "test": /\.js$/
-      }
-    ]
+      },
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],  // Add CSS handling
+      },
+    ],
   },
-  "entry": {
-    "index": "./index"
-  }
 };

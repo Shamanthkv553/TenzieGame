@@ -1,4 +1,5 @@
 import React from "react"
+import '/styles/style.css';  // Ensure this path is correct
 
 export default function Die(props) {
     const styles = {

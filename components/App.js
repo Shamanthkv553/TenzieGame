@@ -32,6 +32,11 @@ export default function App() {
         }
         return newDice
     }
+    function reset(){
+        setDice(oldDice => oldDice.map(die => {
+            return generateNewDie()
+        }))
+    }
     
 /**
  * Challenge: Allow the user to play a new game when the
@@ -82,6 +87,12 @@ export default function App() {
                 onClick={rollDice}
             >
                 {tenzies ? "New Game" : "Roll"}
+            </button>
+            <button 
+                className="roll-dice" 
+                onClick={reset}
+            >
+                Reset
             </button>
         </main>
     )
