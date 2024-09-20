@@ -12,8 +12,12 @@ export default function App() {
         const allHeld = dice.every(die => die.isHeld)
         const firstValue = dice[0].value
         const allSameValue = dice.every(die => die.value === firstValue)
-        if (allHeld && allSameValue) {
+        
+        if (allHeld ) {
+            if(allSameValue)
             setTenzies(true)
+            else
+            reset();
         }
     }, [dice])
 
