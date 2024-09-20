@@ -1,10 +1,9 @@
 {
   "name": "tenzie",
-  "description": "https://v2.scrimba.com/learn-react-c0e/~05h",
   "scripts": {
     "start": "webpack-dev-server --open",
     "watch": "webpack -w",
-    "build": "webpack"
+    "build": "webpack --mode production"
   },
   "dependencies": {
     "css-loader": "^7.1.2",
