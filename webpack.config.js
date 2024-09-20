@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports = {
   mode: 'development',
-  entry: '/index.js',
+  entry: './index.js',  // Correct entry path based on your structure
   output: {
     filename: 'main.pack.js',
     path: path.resolve(__dirname, 'dist'),
@@ -19,7 +19,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html',
+      template: './src/index.html', // This part is fine
     }),
   ],
   module: {
